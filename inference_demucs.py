@@ -260,7 +260,7 @@ class EnsembleDemucsMDXMusicSeparationModel:
         self.infer_session1 = ort.InferenceSession(
             model_path_onnx1,
             providers=providers,
-            provider_options=[{"device_id": gpu_id if device != 'cpu' else 0}],
+            provider_options=[{"device_id": 0}],
         )
 
         if self.single_onnx is False:
@@ -274,7 +274,7 @@ class EnsembleDemucsMDXMusicSeparationModel:
             self.infer_session2 = ort.InferenceSession(
                 model_path_onnx2,
                 providers=providers,
-                provider_options=[{"device_id": gpu_id if device != 'cpu' else 0}],
+                provider_options=[{"device_id": 0}],
             )
 
         self.device = device
@@ -582,7 +582,7 @@ class EnsembleDemucsMDXMusicSeparationModelLowGPU:
         infer_session1 = ort.InferenceSession(
             model_path_onnx1,
             providers=self.providers,
-            provider_options=[{"device_id": gpu_id if self.device != 'cpu' else 0}],
+            provider_options=[{"device_id": 0}],
         )
         overlap = overlap_large
         sources1 = demix_full(
@@ -611,7 +611,7 @@ class EnsembleDemucsMDXMusicSeparationModelLowGPU:
             infer_session2 = ort.InferenceSession(
                 model_path_onnx2,
                 providers=self.providers,
-                provider_options=[{"device_id": gpu_id if self.device != 'cpu' else 0}],
+                provider_options=[{"device_id": 0}],
             )
 
             overlap = overlap_large
